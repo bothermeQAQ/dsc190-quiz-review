@@ -12,7 +12,9 @@ Open `index.html` in a browser, or visit the GitHub Pages site after deployment.
 
 Question and answer text comes from the [DSC 190 course repository](https://github.com/dsc-courses/dsc190-tools-2026-fa). Site authorship does not imply authorship of the course materials. This is an independent student project, not an official course site.
 
-Cards retain the source questions and answers. Mock Quiz choices are assembled by this tool; they are not official exam options.
+Cards retain the source questions and answers. Each reviewed multiple-choice question has the exact source answer, two hand-written tricky distractors, and one clearly incorrect distractor. All four positions are shuffled on each attempt. These are practice options, not official exam options.
+
+The reviewed options are maintained in `practice/reviewed-options.json` and embedded in the standalone HTML by `node scripts/embed-practice.mjs`. Each set is tied to both its question text and its source answer. New or changed source questions remain available in Cards, but wait for reviewed options before entering Mock Quiz; the quiz shows a pending count when applicable. True/false practice also uses the question's own reviewed distractors.
 
 ## Updates
 
