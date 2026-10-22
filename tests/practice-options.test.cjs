@@ -23,7 +23,9 @@ function runtime(type = 'mc') {
 }
 
 test('every current source question has exactly two tricky and one obvious reviewed alternatives', () => {
-  assert.equal(questions.length, 137);
+  assert.equal(questions.length, 164);
+  assert.equal(questions.filter(q => q.lecture === 8).length, 15);
+  assert.equal(questions.filter(q => q.lecture === 9).length, 12);
   assert.equal(bank.length, questions.length);
   for (const q of questions) {
     const row = bank.find(r => r.question === q.q && r.answer === q.a);

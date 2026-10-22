@@ -1642,5 +1642,329 @@
       "`git add <file>`"
     ],
     "obvious": "`mkdir <file>`"
+  },
+  {
+    "reference": "8.1",
+    "lecture": 8,
+    "path": "lectures/08-git-II/YSK.md",
+    "question": "What is the name of the single branch that every new Git repo starts with?",
+    "answer": "`main`",
+    "tricky": [
+      "`HEAD`",
+      "`origin/main`"
+    ],
+    "obvious": "`.gitignore`"
+  },
+  {
+    "reference": "8.2",
+    "lecture": 8,
+    "path": "lectures/08-git-II/YSK.md",
+    "question": "What command creates a new branch called `alpha` and switches to it?",
+    "answer": "`git switch -c alpha`",
+    "tricky": [
+      "`git branch alpha`",
+      "`git switch alpha`"
+    ],
+    "obvious": "`git log alpha`"
+  },
+  {
+    "reference": "8.3",
+    "lecture": 8,
+    "path": "lectures/08-git-II/YSK.md",
+    "question": "What command switches to an existing branch named `alpha`?",
+    "answer": "`git switch alpha`",
+    "tricky": [
+      "`git switch -c alpha`",
+      "`git branch alpha`"
+    ],
+    "obvious": "`git status alpha`"
+  },
+  {
+    "reference": "8.4",
+    "lecture": 8,
+    "path": "lectures/08-git-II/YSK.md",
+    "question": "When you run `git switch alpha`, which of the three trees are updated?",
+    "answer": "All three: HEAD, the staging area, and the working tree.",
+    "tricky": [
+      "HEAD only; the staging area and working tree keep the previous branch contents",
+      "HEAD and the working tree only; the staging area keeps the previous branch contents"
+    ],
+    "obvious": "The shell PATH and Python sys.path"
+  },
+  {
+    "reference": "8.5",
+    "lecture": 8,
+    "path": "lectures/08-git-II/YSK.md",
+    "question": "What command lists all branches in the current repo?",
+    "answer": "`git branch`",
+    "tricky": [
+      "`git branch --show-current`",
+      "`git log --all`"
+    ],
+    "obvious": "`mkdir branches`"
+  },
+  {
+    "reference": "8.6",
+    "lecture": 8,
+    "path": "lectures/08-git-II/YSK.md",
+    "question": "What command deletes a branch named `alpha`?",
+    "answer": "`git branch -d alpha`",
+    "tricky": [
+      "`git switch -d alpha`",
+      "`git branch --delete main`"
+    ],
+    "obvious": "`pwd alpha`"
+  },
+  {
+    "reference": "8.7",
+    "lecture": 8,
+    "path": "lectures/08-git-II/YSK.md",
+    "question": "What command merges the branch `alpha` into the current branch?",
+    "answer": "`git merge alpha`",
+    "tricky": [
+      "`git switch alpha` followed by `git merge main`, which always merges alpha into the original current branch",
+      "`git rebase alpha`"
+    ],
+    "obvious": "`git log alpha`"
+  },
+  {
+    "reference": "8.8",
+    "lecture": 8,
+    "path": "lectures/08-git-II/YSK.md",
+    "question": "What sequence of commands merges branch `alpha` into `main`?",
+    "answer": "`git switch main` followed by `git merge alpha`.",
+    "tricky": [
+      "`git switch alpha` followed by `git merge main`",
+      "`git switch main` followed by `git merge main`"
+    ],
+    "obvious": "`mkdir alpha main`"
+  },
+  {
+    "reference": "8.9",
+    "lecture": 8,
+    "path": "lectures/08-git-II/YSK.md",
+    "question": "What command aborts an in-progress merge and returns to the pre-merge state?",
+    "answer": "`git merge --abort`",
+    "tricky": [
+      "`git merge --quit`",
+      "`git reset --soft HEAD`"
+    ],
+    "obvious": "`git log --oneline`"
+  },
+  {
+    "reference": "8.10",
+    "lecture": 8,
+    "path": "lectures/08-git-II/YSK.md",
+    "question": "What command merges `alpha` into the current branch, but if there are conflicts, it automatically resolves them in favor of the current branch's changes?",
+    "answer": "`git merge -X ours alpha`",
+    "tricky": [
+      "`git merge -X theirs alpha`",
+      "`git merge --no-commit alpha`"
+    ],
+    "obvious": "`git status alpha`"
+  },
+  {
+    "reference": "8.11",
+    "lecture": 8,
+    "path": "lectures/08-git-II/YSK.md",
+    "question": "What command merges `alpha` into the current branch, but if there are conflicts, it automatically resolves them in favor of `alpha`'s changes?",
+    "answer": "`git merge -X theirs alpha`",
+    "tricky": [
+      "`git merge -X ours alpha`",
+      "`git merge --no-ff alpha`"
+    ],
+    "obvious": "`git log alpha`"
+  },
+  {
+    "reference": "8.12",
+    "lecture": 8,
+    "path": "lectures/08-git-II/YSK.md",
+    "question": "What command moves HEAD to a specific commit `a1b2c3` that is not associated with any branch?",
+    "answer": "`git switch --detach a1b2c3`",
+    "tricky": [
+      "`git switch a1b2c3` without --detach, treating the commit as a branch name",
+      "`git branch a1b2c3`, which creates a branch name but does not move HEAD"
+    ],
+    "obvious": "`mkdir a1b2c3`"
+  },
+  {
+    "reference": "8.13",
+    "lecture": 8,
+    "path": "lectures/08-git-II/YSK.md",
+    "question": "What is a detached HEAD?",
+    "answer": "A state where HEAD points directly at a commit instead of at a branch.",
+    "tricky": [
+      "A state where HEAD still points at a branch, but that branch has no remote tracking branch",
+      "A state where the staging area is empty while HEAD still points at the current branch"
+    ],
+    "obvious": "A state where the terminal has no keyboard input"
+  },
+  {
+    "reference": "8.14",
+    "lecture": 8,
+    "path": "lectures/08-git-II/YSK.md",
+    "question": "Why is committing while in a detached HEAD state dangerous?",
+    "answer": "The new commits are not reachable from any branch, so they will eventually be garbage collected.",
+    "tricky": [
+      "Switching away immediately overwrites the last main commit with the detached commit",
+      "Detached commits are automatically added to main, so they can silently change that branch"
+    ],
+    "obvious": "Creating a detached commit deletes every file in the working directory"
+  },
+  {
+    "reference": "8.15",
+    "lecture": 8,
+    "path": "lectures/08-git-II/YSK.md",
+    "question": "What does git do with commits that are not reachable from any branch?",
+    "answer": "They are eventually garbage collected.",
+    "tricky": [
+      "They are automatically attached to main so that no commits can be lost",
+      "They remain permanently protected even after all reflog entries and other references expire"
+    ],
+    "obvious": "They are converted into Python packages"
+  },
+  {
+    "reference": "9.1",
+    "lecture": 9,
+    "path": "lectures/09-git-III/YSK.md",
+    "question": "Why is it a bad idea to commit large non-text files (e.g., PDFs, images, datasets) to a Git repo?",
+    "answer": "Git stores a copy of every version of every file, so they consume lots of space and slow down operations like `git status`.",
+    "tricky": [
+      "Git replaces old binary versions with the newest copy, so previous versions cannot be recovered",
+      "Git refuses to track non-text files at all, even when explicitly added"
+    ],
+    "obvious": "Committing an image disables the shell PATH"
+  },
+  {
+    "reference": "9.2",
+    "lecture": 9,
+    "path": "lectures/09-git-III/YSK.md",
+    "question": "What is the name of the file used to tell Git which files to ignore?",
+    "answer": "`.gitignore`",
+    "tricky": [
+      "`.gitconfig`",
+      "`.gitattributes`"
+    ],
+    "obvious": "`requirements.txt`"
+  },
+  {
+    "reference": "9.3",
+    "lecture": 9,
+    "path": "lectures/09-git-III/YSK.md",
+    "question": "Where in the project is the `.gitignore` file usually placed?",
+    "answer": "At the root of the project.",
+    "tricky": [
+      "Inside the .git metadata directory as .git/.gitignore",
+      "Only in the project parent directory, outside the repository"
+    ],
+    "obvious": "Inside the Python executable"
+  },
+  {
+    "reference": "9.4",
+    "lecture": 9,
+    "path": "lectures/09-git-III/YSK.md",
+    "question": "In a `.gitignore` file, what does the line `*.pdf` do?",
+    "answer": "Tells Git to ignore all files whose names end in `.pdf`.",
+    "tricky": [
+      "Ignores PDF files only at the repository root, never PDFs inside subdirectories",
+      "Deletes PDF files already tracked in the repository and removes them from past commits"
+    ],
+    "obvious": "Installs a PDF reader"
+  },
+  {
+    "reference": "9.5",
+    "lecture": 9,
+    "path": "lectures/09-git-III/YSK.md",
+    "question": "According to the recommended solo workflow, what state should the `main` branch always be in?",
+    "answer": "A \"clean\" state — e.g., the code should run without errors.",
+    "tricky": [
+      "An experimental state with unfinished changes committed directly before testing",
+      "A state with no commits at all until the entire project is finished"
+    ],
+    "obvious": "A detached HEAD state at all times"
+  },
+  {
+    "reference": "9.6",
+    "lecture": 9,
+    "path": "lectures/09-git-III/YSK.md",
+    "question": "According to the recommended solo workflow, where should new work be done?",
+    "answer": "On a new feature branch, not directly on `main`.",
+    "tricky": [
+      "Directly on main, with feature branches created only after the work is finished",
+      "In detached HEAD, without creating any branch to retain the new commits"
+    ],
+    "obvious": "Inside the .gitignore file"
+  },
+  {
+    "reference": "9.7",
+    "lecture": 9,
+    "path": "lectures/09-git-III/YSK.md",
+    "question": "What is a \"feature branch\"?",
+    "answer": "A branch created for a single task, feature, or experiment, separate from `main`.",
+    "tricky": [
+      "A branch that must contain every unrelated task in the project",
+      "A staging-area snapshot that cannot have its own commits"
+    ],
+    "obvious": "A shell environment variable named FEATURE"
+  },
+  {
+    "reference": "9.8",
+    "lecture": 9,
+    "path": "lectures/09-git-III/YSK.md",
+    "question": "What does a \"squash merge\" do?",
+    "answer": "Combines all the commits from a branch into a single commit on the target branch.",
+    "tricky": [
+      "Creates a two-parent merge commit and keeps every feature commit in the target branch history",
+      "Moves all target-branch commits onto the feature branch without combining them"
+    ],
+    "obvious": "Compresses the project into a ZIP file"
+  },
+  {
+    "reference": "9.9",
+    "lecture": 9,
+    "path": "lectures/09-git-III/YSK.md",
+    "question": "What command performs a squash merge of the branch `feature` into the current branch?",
+    "answer": "`git merge --squash feature`",
+    "tricky": [
+      "`git merge --no-ff feature`",
+      "`git rebase feature`"
+    ],
+    "obvious": "`git log feature`"
+  },
+  {
+    "reference": "9.10",
+    "lecture": 9,
+    "path": "lectures/09-git-III/YSK.md",
+    "question": "After running `git merge --squash feature`, what step is required to actually record the merge?",
+    "answer": "Run `git commit` to create the squashed commit.",
+    "tricky": [
+      "Run `git merge --continue`, because --squash leaves a normal in-progress merge with MERGE_HEAD",
+      "Run `git add .` only; staging the result automatically records the squashed commit"
+    ],
+    "obvious": "Run `pwd` to save the commit history"
+  },
+  {
+    "reference": "9.11",
+    "lecture": 9,
+    "path": "lectures/09-git-III/YSK.md",
+    "question": "After squash-merging a branch `feature` into `main`, what command deletes the `feature` branch?",
+    "answer": "`git branch -D feature`",
+    "tricky": [
+      "`git branch -d feature` — always succeeds after a squash merge, even if the original feature commits are not ancestors of main",
+      "`git switch -d feature`"
+    ],
+    "obvious": "`mkdir feature`"
+  },
+  {
+    "reference": "9.12",
+    "lecture": 9,
+    "path": "lectures/09-git-III/YSK.md",
+    "question": "What Git feature lets several AI agents work on the same repository in parallel, each on its own branch in its own directory?",
+    "answer": "Worktrees (`git worktree`).",
+    "tricky": [
+      "Stashes (`git stash`) — each stash provides a separate branch checkout directory",
+      "Branches alone (`git branch`) — every branch automatically has its own directory without a worktree"
+    ],
+    "obvious": "The PATH environment variable"
   }
 ]
