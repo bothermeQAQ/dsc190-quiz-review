@@ -1959,6 +1959,30 @@
     "reference": "9.12",
     "lecture": 9,
     "path": "lectures/09-git-III/YSK.md",
+    "question": "In GitHub Flow, how is a feature branch merged into `main`?",
+    "answer": "By opening a pull request on GitHub and merging it there.",
+    "tricky": [
+      "By merging locally into main and pushing main directly, without opening a pull request",
+      "By opening a GitHub issue; closing the issue automatically merges the feature branch"
+    ],
+    "obvious": "By adding the branch name to .gitignore"
+  },
+  {
+    "reference": "9.13",
+    "lecture": 9,
+    "path": "lectures/09-git-III/YSK.md",
+    "question": "After committing changes to a local feature branch, what must you do before opening a pull request?",
+    "answer": "Push the branch to GitHub.",
+    "tricky": [
+      "Merge the feature branch into local main first; uploading the feature branch is unnecessary",
+      "Stage the local files with git add; GitHub can open a pull request using staged files without a push"
+    ],
+    "obvious": "Delete the local .git directory"
+  },
+  {
+    "reference": "9.14",
+    "lecture": 9,
+    "path": "lectures/09-git-III/YSK.md",
     "question": "What Git feature lets several AI agents work on the same repository in parallel, each on its own branch in its own directory?",
     "answer": "Worktrees (`git worktree`).",
     "tricky": [
@@ -1966,5 +1990,257 @@
       "Branches alone (`git branch`) — every branch automatically has its own directory without a worktree"
     ],
     "obvious": "The PATH environment variable"
+  },
+  {
+    "reference": "10.1",
+    "lecture": 10,
+    "path": "lectures/10-python_projects/YSK.md",
+    "question": "What two older Python tools does `uv` replace?",
+    "answer": "`pip` and `python -m venv`.",
+    "tricky": [
+      "`pip` and `git`",
+      "`python -m venv` and `pytest`"
+    ],
+    "obvious": "`ls` and `rm`"
+  },
+  {
+    "reference": "10.2",
+    "lecture": 10,
+    "path": "lectures/10-python_projects/YSK.md",
+    "question": "Which file does `uv init` create to hold a project's metadata and dependencies?",
+    "answer": "`pyproject.toml`.",
+    "tricky": [
+      "`uv.lock`",
+      "`requirements.txt`"
+    ],
+    "obvious": "`main.py`"
+  },
+  {
+    "reference": "10.3",
+    "lecture": 10,
+    "path": "lectures/10-python_projects/YSK.md",
+    "question": "What command adds `numpy` as a dependency to a uv project?",
+    "answer": "`uv add numpy`.",
+    "tricky": [
+      "`uv pip install numpy`",
+      "`uv lock --upgrade-package numpy`"
+    ],
+    "obvious": "`git add numpy`"
+  },
+  {
+    "reference": "10.4",
+    "lecture": 10,
+    "path": "lectures/10-python_projects/YSK.md",
+    "question": "What does the command `uv add \"numpy==2.4.4\"` do?",
+    "answer": "Adds numpy pinned to exactly version 2.4.4.",
+    "tricky": [
+      "Adds numpy with a minimum version of 2.4.4, allowing later versions",
+      "Adds numpy at any version in the 2.4 series, including versions other than 2.4.4"
+    ],
+    "obvious": "Runs the NumPy test suite without changing dependencies"
+  },
+  {
+    "reference": "10.5",
+    "lecture": 10,
+    "path": "lectures/10-python_projects/YSK.md",
+    "question": "What command removes `numpy` from a uv project?",
+    "answer": "`uv remove numpy`.",
+    "tricky": [
+      "`uv pip uninstall numpy`",
+      "`uv lock --remove numpy`"
+    ],
+    "obvious": "`git branch -d numpy`"
+  },
+  {
+    "reference": "10.6",
+    "lecture": 10,
+    "path": "lectures/10-python_projects/YSK.md",
+    "question": "What command upgrades only `numpy` to its latest allowed version?",
+    "answer": "`uv lock --upgrade-package numpy`.",
+    "tricky": [
+      "`uv lock --upgrade`",
+      "`uv sync`"
+    ],
+    "obvious": "`git log numpy`"
+  },
+  {
+    "reference": "10.7",
+    "lecture": 10,
+    "path": "lectures/10-python_projects/YSK.md",
+    "question": "What command upgrades all dependencies in a uv project to their latest allowed versions?",
+    "answer": "`uv lock --upgrade`.",
+    "tricky": [
+      "`uv lock --upgrade-package numpy`",
+      "`uv sync`"
+    ],
+    "obvious": "`git status`"
+  },
+  {
+    "reference": "10.8",
+    "lecture": 10,
+    "path": "lectures/10-python_projects/YSK.md",
+    "question": "What command activates a uv project's virtual environment in a bash shell?",
+    "answer": "`source .venv/bin/activate`.",
+    "tricky": [
+      "`bash .venv/bin/activate`",
+      "`source .venv/activate`"
+    ],
+    "obvious": "`git switch .venv`"
+  },
+  {
+    "reference": "10.9",
+    "lecture": 10,
+    "path": "lectures/10-python_projects/YSK.md",
+    "question": "What does `uv run pytest` do?",
+    "answer": "Runs `pytest` inside the project's virtual environment.",
+    "tricky": [
+      "Installs pytest as a declared project dependency and stops without running the tests",
+      "Runs pytest outside the project environment, ignoring the project dependencies"
+    ],
+    "obvious": "Creates a Git branch called pytest"
+  },
+  {
+    "reference": "10.10",
+    "lecture": 10,
+    "path": "lectures/10-python_projects/YSK.md",
+    "question": "What does `uvx ruff` do?",
+    "answer": "Installs and runs `ruff` outside of a project.",
+    "tricky": [
+      "Adds ruff to the current project dependencies before running it in the project environment",
+      "Requires ruff to be installed in the current project virtual environment and runs that copy only"
+    ],
+    "obvious": "Reformats every file in the current repository without needing a Ruff command"
+  },
+  {
+    "reference": "10.11",
+    "lecture": 10,
+    "path": "lectures/10-python_projects/YSK.md",
+    "question": "What does `uv sync` do?",
+    "answer": "Updates the virtual environment to match the dependencies declared in `pyproject.toml` and `uv.lock`.",
+    "tricky": [
+      "Upgrades every locked dependency to its newest allowed version on every invocation",
+      "Rewrites the declared dependencies to match any extra packages manually installed in the environment"
+    ],
+    "obvious": "Pushes local Git commits to GitHub"
+  },
+  {
+    "reference": "10.12",
+    "lecture": 10,
+    "path": "lectures/10-python_projects/YSK.md",
+    "question": "What is the purpose of the `uv.lock` file?",
+    "answer": "It records the exact version of every installed package (and every recursive dependency) so the environment can be reproduced.",
+    "tricky": [
+      "Stores only acceptable version ranges for direct dependencies, leaving transitive versions unrecorded",
+      "Stores the installed package source files themselves instead of dependency versions"
+    ],
+    "obvious": "Stores the repository commit history"
+  },
+  {
+    "reference": "10.13",
+    "lecture": 10,
+    "path": "lectures/10-python_projects/YSK.md",
+    "question": "After cloning a uv project from GitHub, what single command sets up an identical virtual environment?",
+    "answer": "`uv sync`.",
+    "tricky": [
+      "`uv lock`",
+      "`uv venv`"
+    ],
+    "obvious": "`git init`"
+  },
+  {
+    "reference": "10.14",
+    "lecture": 10,
+    "path": "lectures/10-python_projects/YSK.md",
+    "question": "What is a \"dev dependency\"?",
+    "answer": "A package needed only during development (e.g., a linter or test runner), not at runtime.",
+    "tricky": [
+      "A package needed by the application at runtime, but never by development tools",
+      "A package that must be installed globally because it cannot be included in a project environment"
+    ],
+    "obvious": "A Git branch whose name starts with dev"
+  },
+  {
+    "reference": "10.15",
+    "lecture": 10,
+    "path": "lectures/10-python_projects/YSK.md",
+    "question": "What command adds `ruff` as a dev dependency?",
+    "answer": "`uv add --dev ruff`.",
+    "tricky": [
+      "`uv add ruff`",
+      "`uv pip install ruff`"
+    ],
+    "obvious": "`git add ruff`"
+  },
+  {
+    "reference": "10.16",
+    "lecture": 10,
+    "path": "lectures/10-python_projects/YSK.md",
+    "question": "What does a *linter* do?",
+    "answer": "Checks code for potential errors and style issues.",
+    "tricky": [
+      "Rewrites code layout only, without checking for potential bugs such as unused imports",
+      "Runs the program test cases and decides whether their expected outputs match"
+    ],
+    "obvious": "Installs project dependencies into a virtual environment"
+  },
+  {
+    "reference": "10.17",
+    "lecture": 10,
+    "path": "lectures/10-python_projects/YSK.md",
+    "question": "What command uses ruff to check `main.py` for lint errors?",
+    "answer": "`ruff check main.py`.",
+    "tricky": [
+      "`ruff format main.py`",
+      "`ruff main.py`"
+    ],
+    "obvious": "`git status main.py`"
+  },
+  {
+    "reference": "10.18",
+    "lecture": 10,
+    "path": "lectures/10-python_projects/YSK.md",
+    "question": "What command uses ruff to automatically fix the lint errors it finds in `main.py`?",
+    "answer": "`ruff check --fix main.py`.",
+    "tricky": [
+      "`ruff check main.py`",
+      "`ruff format main.py`"
+    ],
+    "obvious": "`git log main.py`"
+  },
+  {
+    "reference": "10.19",
+    "lecture": 10,
+    "path": "lectures/10-python_projects/YSK.md",
+    "question": "What command uses ruff to reformat `main.py` according to its style rules?",
+    "answer": "`ruff format main.py`.",
+    "tricky": [
+      "`ruff check --fix main.py`",
+      "`ruff format --check main.py`"
+    ],
+    "obvious": "`git branch main.py`"
+  },
+  {
+    "reference": "10.20",
+    "lecture": 10,
+    "path": "lectures/10-python_projects/YSK.md",
+    "question": "What is PEP8?",
+    "answer": "The official Python style guide.",
+    "tricky": [
+      "The standard that defines Python package version-number syntax",
+      "The specification for the Python build-backend interface used by packaging tools"
+    ],
+    "obvious": "A command that deletes Python virtual environments"
+  },
+  {
+    "reference": "10.21",
+    "lecture": 10,
+    "path": "lectures/10-python_projects/YSK.md",
+    "question": "According to PEP8, what naming convention should be used for variable and function names?",
+    "answer": "`snake_case`.",
+    "tricky": [
+      "`camelCase`",
+      "`PascalCase`"
+    ],
+    "obvious": "`names containing spaces`"
   }
 ]
