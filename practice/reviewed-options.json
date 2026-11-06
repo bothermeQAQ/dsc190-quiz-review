@@ -2242,5 +2242,233 @@
       "`PascalCase`"
     ],
     "obvious": "`names containing spaces`"
+  },
+  {
+    "reference": "11.1",
+    "lecture": 11,
+    "path": "lectures/11-mypy_pytest/YSK.md",
+    "question": "What does the `: int` mean in `def add(a: int, b: int) -> int`?",
+    "answer": "It declares that the parameters `a` and `b` are expected to be of type `int`.",
+    "tricky": [
+      "It converts a and b to integers automatically whenever the function is called",
+      "It declares the return type, without describing the parameter types"
+    ],
+    "obvious": "It creates a Git branch named int"
+  },
+  {
+    "reference": "11.2",
+    "lecture": 11,
+    "path": "lectures/11-mypy_pytest/YSK.md",
+    "question": "What does the `-> int` mean in `def add(a: int, b: int) -> int`?",
+    "answer": "It declares that the function returns a value of type `int`.",
+    "tricky": [
+      "It declares that the function takes one additional argument named int",
+      "It converts any returned value to an integer automatically at runtime"
+    ],
+    "obvious": "It activates a Python virtual environment"
+  },
+  {
+    "reference": "11.3",
+    "lecture": 11,
+    "path": "lectures/11-mypy_pytest/YSK.md",
+    "question": "What will happen at runtime if you call `add(3.14, 7.00)` given the type hints in `def add(a: int, b: int) -> int`?",
+    "answer": "No error will occur, and the function will return `10.14` as a float, ignoring the type hints.",
+    "tricky": [
+      "Python raises a TypeError before entering the function because both arguments are floats",
+      "Python converts both arguments to integers and returns the integer 10"
+    ],
+    "obvious": "Python deletes the function definition"
+  },
+  {
+    "reference": "11.4",
+    "lecture": 11,
+    "path": "lectures/11-mypy_pytest/YSK.md",
+    "question": "What type hint declares that `numbers` should be a list of floats?",
+    "answer": "`list[float]`.",
+    "tricky": [
+      "`list[int]`",
+      "`float[list]`"
+    ],
+    "obvious": "`git log`"
+  },
+  {
+    "reference": "11.5",
+    "lecture": 11,
+    "path": "lectures/11-mypy_pytest/YSK.md",
+    "question": "What is a downside of typing a parameter as `list[float]` if the function only iterates over it?",
+    "answer": "It rejects other valid finite collections like tuples or sets.",
+    "tricky": [
+      "It allows tuples but rejects sets, even when both contain only floats",
+      "It automatically converts every tuple or set argument into a list at runtime"
+    ],
+    "obvious": "It prevents the project from having any Git branches"
+  },
+  {
+    "reference": "11.6",
+    "lecture": 11,
+    "path": "lectures/11-mypy_pytest/YSK.md",
+    "question": "Which `collections.abc` type is appropriate for \"any finite collection of items\"?",
+    "answer": "`Collection`.",
+    "tricky": [
+      "`Sequence`",
+      "`Iterator`"
+    ],
+    "obvious": "`TypeError`"
+  },
+  {
+    "reference": "11.7",
+    "lecture": 11,
+    "path": "lectures/11-mypy_pytest/YSK.md",
+    "question": "What does the type hint `Collection[float]` mean?",
+    "answer": "Any finite collection (list, set, tuple, etc.) whose elements are floats.",
+    "tricky": [
+      "Only a list of floats; sets and tuples are excluded",
+      "Any finite collection, with no restriction on the element type"
+    ],
+    "obvious": "A command that installs a package called float"
+  },
+  {
+    "reference": "11.8",
+    "lecture": 11,
+    "path": "lectures/11-mypy_pytest/YSK.md",
+    "question": "What does the type hint `int | str` mean?",
+    "answer": "A value that is either an `int` or a `str`.",
+    "tricky": [
+      "A value that must be an int and a str at the same time",
+      "A pair containing one int and one str, rather than a single value"
+    ],
+    "obvious": "A pipeline connecting two shell commands"
+  },
+  {
+    "reference": "11.9",
+    "lecture": 11,
+    "path": "lectures/11-mypy_pytest/YSK.md",
+    "question": "What is the term for a type hint like `int | str`?",
+    "answer": "A type union.",
+    "tricky": [
+      "A type intersection",
+      "A tuple type"
+    ],
+    "obvious": "A Git merge conflict"
+  },
+  {
+    "reference": "11.10",
+    "lecture": 11,
+    "path": "lectures/11-mypy_pytest/YSK.md",
+    "question": "What type hint would you use for an optional argument (i.e., one that can be an `int` or `None`)?",
+    "answer": "`int | None`",
+    "tricky": [
+      "`int | str`",
+      "`int & None`"
+    ],
+    "obvious": "`git branch optional`"
+  },
+  {
+    "reference": "11.11",
+    "lecture": 11,
+    "path": "lectures/11-mypy_pytest/YSK.md",
+    "question": "What does the syntax `def maximum[T](items: Collection[T]) -> T` introduce?",
+    "answer": "A type variable `T`, making `maximum` a generic function over the element type.",
+    "tricky": [
+      "A runtime list called T that stores the values supplied to maximum",
+      "A fixed type alias T that always means float, regardless of the argument element type"
+    ],
+    "obvious": "A new Git worktree named T"
+  },
+  {
+    "reference": "11.12",
+    "lecture": 11,
+    "path": "lectures/11-mypy_pytest/YSK.md",
+    "question": "What filename prefix does pytest use to discover test files?",
+    "answer": "`test_`.",
+    "tricky": [
+      "`tests_`",
+      "`Test`"
+    ],
+    "obvious": "`numpy_`"
+  },
+  {
+    "reference": "11.13",
+    "lecture": 11,
+    "path": "lectures/11-mypy_pytest/YSK.md",
+    "question": "What function-name prefix does pytest use to discover test functions within a test file?",
+    "answer": "`test_`.",
+    "tricky": [
+      "`Test`",
+      "`check_`"
+    ],
+    "obvious": "`git_`"
+  },
+  {
+    "reference": "11.14",
+    "lecture": 11,
+    "path": "lectures/11-mypy_pytest/YSK.md",
+    "question": "What Python keyword is used inside a test function to check that a condition holds?",
+    "answer": "`assert`.",
+    "tricky": [
+      "`if` — an if statement alone makes pytest fail whenever the condition is false",
+      "`raise` — raise condition passes whenever the condition evaluates to True"
+    ],
+    "obvious": "`import` — importing a condition checks its truth value"
+  },
+  {
+    "reference": "11.15",
+    "lecture": 11,
+    "path": "lectures/11-mypy_pytest/YSK.md",
+    "question": "What does TDD stand for?",
+    "answer": "Test-driven development.",
+    "tricky": [
+      "Type-driven development",
+      "Test-design documentation"
+    ],
+    "obvious": "Total disk deletion"
+  },
+  {
+    "reference": "11.16",
+    "lecture": 11,
+    "path": "lectures/11-mypy_pytest/YSK.md",
+    "question": "After seeing a test fail (red) in TDD, what is the next step?",
+    "answer": "Write the minimum code needed to make the test pass.",
+    "tricky": [
+      "Refactor the implementation before writing any code to make the failing test pass",
+      "Change the expected result to match the current output without fixing the implementation"
+    ],
+    "obvious": "Delete the repository history"
+  },
+  {
+    "reference": "11.17",
+    "lecture": 11,
+    "path": "lectures/11-mypy_pytest/YSK.md",
+    "question": "Should tests check the output of a function or its internal implementation?",
+    "answer": "The output of the function.",
+    "tricky": [
+      "The exact sequence of internal helper calls, even when the public output is unchanged",
+      "The internal data structure used, even when the observable result is unchanged"
+    ],
+    "obvious": "The color of the source file icon"
+  },
+  {
+    "reference": "11.18",
+    "lecture": 11,
+    "path": "lectures/11-mypy_pytest/YSK.md",
+    "question": "Why should you avoid `==` to compare floats in tests?",
+    "answer": "Floating-point arithmetic produces small rounding errors that can make mathematically equal values compare unequal.",
+    "tricky": [
+      "Python does not define the == operator for floating-point values",
+      "== compares float object identities rather than their numeric values"
+    ],
+    "obvious": "Comparing floats changes the current Git branch"
+  },
+  {
+    "reference": "11.19",
+    "lecture": 11,
+    "path": "lectures/11-mypy_pytest/YSK.md",
+    "question": "What does `pytest.raises(TypeError)` do when used in a `with` block?",
+    "answer": "Asserts that the code inside the block raises a `TypeError`.",
+    "tricky": [
+      "It passes if any exception is raised, even if the exception is not a TypeError",
+      "It checks that the block returns a TypeError object rather than raising an exception"
+    ],
+    "obvious": "It installs pytest into the project"
   }
 ]

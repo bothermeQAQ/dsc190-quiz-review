@@ -26,6 +26,8 @@ Progress (Knew it / Review again) and the current quiz, mode, card and filters a
 
 ## Quizzes
 
+Lecture 12's [YSK](https://github.com/dsc-courses/dsc190-tools-2026-fa/blob/main/lectures/12-wordle/YSK.md) explicitly contains no questions because the lecture was a live demo. Quiz 6 therefore draws only from Lecture 11 (19 questions).
+
 Lectures are grouped two per quiz (Lecture 3–4 → Quiz 2). If the course schedule differs, add the lecture to `QUIZ_OVERRIDES` near the top of the script in `index.html`, e.g. `{7:3}`. Quiz headings come from the lecture names unless set in `QUIZ_TITLES`.
 
 ## Keyboard
